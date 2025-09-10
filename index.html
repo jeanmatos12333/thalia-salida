@@ -1,20 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Thalia-Jean</title>
+    <title>Thalia 💖</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        select, input {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 15px;
+            background: #ff6f91;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff3d68;
+            transform: scale(1.1);
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Corazones flotando */
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff6f91;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="tenor-gif-embed" data-postid="2871482820979272488" data-share-method="host" data-aspect-ratio="1.28351" data-width="100%"><a href="https://tenor.com/view/mochi-pet-mochi-cat-cute-squiddy-gif-2871482820979272488">Mochi Pet GIF</a>from <a href="https://tenor.com/search/mochi-gifs">Mochi GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-        <h1>¿Te gustaria salir conmigo este viernes 16/05/2025? 🥰</h1>
-        <p>Eres el amor de mi vida mi Thalia 🥰</p>
-        <div class="btn">
-            <a href="si.html">SI</a>
-            <a href="no1.html">NO</a>
-        </div>
+    <br/>
+    <div class="card">
+        <h2>💍 Preguntas de Amor 💕</h2>
+        <label>¿Quieres casarte con Jean?</label>
+        <select id="pregunta1">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>¿Cuántos hijos quieres tener con Jean?</label>
+        <input id="pregunta2" type="number" min="0"/>
+
+        <label>¿Confías en Jean?</label>
+        <select id="pregunta3">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+        <br/>
+
+        <button onclick="mostrarResultado()">Ver Respuesta 💌</button>
+
+        <div id="resultado"></div>
     </div>
+    <br/>
+    <script>
+        function mostrarResultado() {
+            const casarse = document.getElementById("pregunta1").value;
+            const hijos = document.getElementById("pregunta2").value;
+            const confiar = document.getElementById("pregunta3").value;
+            const resultado = document.getElementById("resultado");
+
+            if (casarse === "Sí" && confiar === "Sí") {
+                resultado.innerHTML = `😍 Gracias amor, juntos tendremos ${hijos || "muchos"} hijitos hermosos y un amor eterno 💖✨`;
+            } else if (casarse === "No") {
+                resultado.innerHTML = "😢 Oh no... mi corazón se rompe 💔";
+            } else {
+                resultado.innerHTML = "💞 Pase lo que pase, siempre te amaré 💞";
+            }
+        }
+
+        // corazones animados flotando
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 5000);
+        }, 500);
+    </script>
 </body>
 </html>
